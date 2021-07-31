@@ -51,7 +51,7 @@ let timer;
 function setup() {
   createCanvas(BOARD_WIDTH, BOARD_HEIGHT + 2*EDGE_HEIGHT);
   currentPlayer = int(random(0, 2)); // select random player
-  console.log("WELCOME TO TIC TAC TOE w/Minimax");
+  // console.log("WELCOME TO TIC TAC TOE w/Minimax");
 
   LIGHT_YELLOW = color('#FEFEE3');
   BLUE_GRAY = color('#1A5E63');
@@ -99,7 +99,6 @@ function ticTacToe() {
             }
           }
           let move = random(available_moves);
-          console.log("move: " + move.row);
           grid[move.row][move.col] = "O";
           computers_first_time = false;
         } else {
@@ -281,14 +280,13 @@ function calculateBestMove() {
       }
     }
   }
-  console.log(bestMove);
   grid[bestMove[0]][bestMove[1]] = 'O';
   console.log("Computer placed move");
 }
 
 function minimax(depth, maximizing) {
   // O win: +1 , X win: -1, tie: 0
-  console.log("minimax called. depth: " + depth + " maximizing: " + maximizing + " board: " + grid);
+  // console.log("minimax called. depth: " + depth + " maximizing: " + maximizing + " board: " + grid);
 
   // check if a player has won (leaf node)
   game_won = gameWon(false);
@@ -349,7 +347,6 @@ function gameWon(recordWinningCoors){  //* Returns {null, 'tie', 'human', or 'co
     if (xsum == 3 || osum == 3) {
       if (recordWinningCoors) { 
         winningLineCoors.push(row, 0, row, grid[0].length - 1); 
-        console.log("game won. winning line: " + winningLineCoors);
       }
       if(xsum == 3){return "human"}
       if(osum == 3){return "computer"}
@@ -367,7 +364,6 @@ function gameWon(recordWinningCoors){  //* Returns {null, 'tie', 'human', or 'co
     if (xsum == 3 || osum == 3) {
       if (recordWinningCoors) { 
         winningLineCoors.push(0, col, grid.length - 1, col); 
-        console.log("game won. winning line: " + winningLineCoors);
       }
       if(xsum == 3){return "human"}
       if(osum == 3){return "computer"}
@@ -388,7 +384,6 @@ function gameWon(recordWinningCoors){  //* Returns {null, 'tie', 'human', or 'co
   if (x1sum == 3 || o1sum == 3) {
     if (recordWinningCoors) { 
       winningLineCoors.push(0, 0, grid.length - 1, grid[0].length - 1); 
-      console.log("game won. winning line: " + winningLineCoors);
     }
     if(x1sum == 3){return "human"}
     if(o1sum == 3){return "computer"}
@@ -396,7 +391,6 @@ function gameWon(recordWinningCoors){  //* Returns {null, 'tie', 'human', or 'co
   if (x2sum == 3 || o2sum == 3) {
     if (recordWinningCoors) { 
       winningLineCoors.push(grid.length, 0, 0, grid[0].length - 1); 
-      console.log("game won. winning line: " + winningLineCoors);
     }
     if(x2sum == 3){return "human"}
     if(o2sum == 3){return "computer"}
@@ -456,7 +450,7 @@ function mouseClicked(){
 
       // place player's symbol there IF empty and update current player
       if(grid[row][col] !== ''){
-        console.log("INVALID MOVE");
+        // console.log("INVALID MOVE");
         break;
       } else {
         grid[row][col] = 'X';
