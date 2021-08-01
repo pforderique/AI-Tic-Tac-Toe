@@ -522,3 +522,8 @@ function keyPressed(){
       break;
   }
 }
+
+// mobile support
+function touchStarted() {
+  mouseClicked();
+}
