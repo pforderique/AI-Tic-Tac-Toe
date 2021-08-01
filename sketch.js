@@ -430,7 +430,7 @@ function resetGame(){
   computers_first_time = true;
 }
 
-function mouseClicked(){
+function mousePressed(){
   switch (game_state) {
     // for mobile devices without keyboard, a click will suffice
     case states.WELCOME_SCREEN:
@@ -521,9 +521,4 @@ function keyPressed(){
     default:
       break;
   }
-}
-
-// mobile support
-function touchStarted() {
-  mouseClicked();
 }
